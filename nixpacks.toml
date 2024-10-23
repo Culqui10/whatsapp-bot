@@ -1,8 +1,8 @@
 [phases.setup]
-nodejs = "18"   # Asegura que use Node.js v18, según lo indicado en los logs
+nodejs = "18"
 
 [phases.install]
-command = "npm install"   # Usa npm install en lugar de npm ci si no tienes un lockfile
+command = "npm ci"
 
 [phases.start]
-command = "npm start"   # Asegura que inicie el servidor correctamente
+command = "npm start"
