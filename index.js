@@ -1,7 +1,12 @@
 const express = require('express');
 const twilio = require('twilio');
-const app = express();
 
+// Configurar Twilio usando las variables de entorno
+const accountSid = process.env.TWILIO_ACCOUNT_SID; 
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = new twilio(accountSid, authToken);
+
+const app = express();
 const MessagingResponse = twilio.twiml.MessagingResponse;
 
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +27,7 @@ app.post('/whatsapp', (req, res) => {
   res.end(twiml.toString());
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Servidor iniciado.');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
